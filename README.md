@@ -10,5 +10,5 @@ This is a weapon shop in PMenu by KreezoX
 
 -- If you don't have weapon accessories, download this resource and insert the SQL
 --------------------------------------------
-// https://github.com/NarekSoNaZ/NarShop \\ 
+/ https://github.com/NarekSoNaZ/NarShop \ 
 -------------------------------------------
