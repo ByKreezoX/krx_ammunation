@@ -8,7 +8,7 @@ This is a weapon shop in PMenu by KreezoX
 2 / start krx_ammunation in your server.cfg
 -----------------------------------------
 
--- If you don't have weapon accessories, download this resource and insert the SQL -- 
+-- If you don't have weapon accessories, download this resource and insert the SQL
 --------------------------------------------
 // https://github.com/NarekSoNaZ/NarShop \\ 
 -------------------------------------------
