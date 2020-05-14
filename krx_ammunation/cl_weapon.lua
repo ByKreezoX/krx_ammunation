@@ -46,8 +46,36 @@ Citizen.CreateThread(function()
     end
 end)
 
+local Ppa = {
+    Base = { Title = "Ammu-Nation" },
+    Data = { currentMenu = "Menu Interaction" },
+    Events = {
+
+        onSelected = function(self, _, btn, CMenu, menuData, currentButton, currentSlt, result)
+            if btn.name == "Permis de Port d'arme" then
+                ESX.TriggerServerCallback('KrX-Ammunation:buyLicense', function(bought)
+                    PlaySoundFrontend(-1, 'WEAPON_PURCHASE', 'HUD_AMMO_SHOP_SOUNDSET', false)
+                    if bought then
+                        ESX.ShowNotification('Vous avez acheté votre ~b~Permis de port d\'arme')
+                        self:CloseMenu(true)
+                    end
+                end)
+            end
+        end,
+    },
+
+    Menu = {
+        ["Menu Interaction"] = {
+            b = {
+                {name = "Permis de Port d'arme", ask = "~g~50000$", askX = true},
+            }
+        },
+
+    }
+}
+
 local ammunation = {
-    Base = {Title = "Ammu Nation" },
+    Base = {Title = "Ammu-Nation" },
     Data = { currentMenu = "Menu Interaction" },
     Events = {
 
@@ -175,21 +203,33 @@ local Ammu = {
  {x = 842.44,   y = -1033.42, z = 27.19 }
 }
 
+
+
  Citizen.CreateThread(function()
     while true do
-       Citizen.Wait(0)
-
+        Citizen.Wait(0)
         for k in pairs(Ammu) do
 
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Ammu[k].x, Ammu[k].y, Ammu[k].z)
 
             if dist <= 2.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour parler a ~b~Franck")
-                if IsControlJustPressed(1,51) then 
-                    CreateMenu(ammunation)
-                  end
+                  ESX.ShowHelpNotification('Appuyez sur ~INPUT_CONTEXT~ pour parler à ~b~Franck')
+                  if IsControlJustPressed(1,51) then 
+                    if Config.ActiverLicense then
+                        ESX.TriggerServerCallback('esx_license:checkLicense', function(hasWeaponLicense)
+                            if hasWeaponLicense then
+                                CreateMenu(ammunation)
+                            else
+                                CreateMenu(Ppa)
+                            end
+                        end, GetPlayerServerId(PlayerId()), 'weapon')
+                    else
+                        CreateMenu(ammunation)
+                    end
+              else
+                end
             end
-         end
-     end
+        end
+    end
 end)
