@@ -17,3 +17,19 @@ AddEventHandler('KrX-Ammunation:buyweapon', function(price, weapon, label, cb)
 	end
 end)
 
+ESX.RegisterServerCallback('KrX-Ammunation:buyLicense', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if xPlayer.getMoney() >= 50000 then
+		xPlayer.removeMoney(50000)
+		TriggerClientEvent('esx:showNotification', source, 'Vous avez acheté la license de port d\'arme pour ~g~ .. 50000 .. "$ !')
+		TriggerEvent('esx_license:addLicense', source, 'weapon', function()
+			cb(true)
+		end)
+	else
+		TriggerClientEvent('esx:showNotification', source, 'Vous n\'avez pas assez d\'argent ~r~sur vous !  !')
+		cb(false)
+	end
+end)
+
+
