@@ -67,7 +67,7 @@ local Ppa = {
     Menu = {
         ["Menu Interaction"] = {
             b = {
-                {name = "Permis de Port d'arme", ask = "~g~50000$", askX = true},
+                {name = "Permis de Port d'arme", ask = "~g~45000$", askX = true},
             }
         },
 
