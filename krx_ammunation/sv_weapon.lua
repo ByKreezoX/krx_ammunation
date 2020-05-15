@@ -20,9 +20,9 @@ end)
 ESX.RegisterServerCallback('KrX-Ammunation:buyLicense', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.getMoney() >= 50000 then
-		xPlayer.removeMoney(50000)
-		TriggerClientEvent('esx:showNotification', source, 'Vous avez acheté la license de port d\'arme pour ~g~ .. 50000 .. "$ !')
+	if xPlayer.getMoney() >= 45000 then
+		xPlayer.removeMoney(45000)
+		TriggerClientEvent('esx:showNotification', source, 'Vous avez acheté la license de port d\'arme pour ~g~ .. 45000 .. "$ !')
 		TriggerEvent('esx_license:addLicense', source, 'weapon', function()
 			cb(true)
 		end)
