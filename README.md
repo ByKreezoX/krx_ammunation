@@ -15,5 +15,5 @@ This is a weapon shop in PMenu by KreezoX
 -
 https://github.com/ByKreezoX/Framework
 -
-(The dependency of the Framework is already in the folder: dependency / menu.lua)
+(The dependency of the Framework is already in the folder: dependencies / menu.lua)
 
